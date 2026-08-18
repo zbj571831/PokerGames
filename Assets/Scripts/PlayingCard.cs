@@ -28,5 +28,15 @@
             Rank = rank;
         }
         #endregion 建構式
+        #region 公開方法
+        /// <summary>
+        /// 樸克牌資料的文字版
+        /// </summary>
+        /// <returns>花色 + 點數 資料的文字</returns>
+        public string Info()
+        {
+            return Suit.ToString() + (int)Rank;
+        }
+        #endregion 公開方法
     }
 }
