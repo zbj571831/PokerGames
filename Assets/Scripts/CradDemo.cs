@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using PokerGame.Core;
+using PokerGame.View;
 
 public class CradDemo : MonoBehaviour
 {

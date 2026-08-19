@@ -1,7 +1,8 @@
 ﻿using TMPro;
 using UnityEngine;
+using PokerGame.Core;
 
-namespace PokerGame.Core
+namespace PokerGame.View
 {
     public class CardView : MonoBehaviour
     {
