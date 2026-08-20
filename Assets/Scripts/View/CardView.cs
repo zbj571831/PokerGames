@@ -67,15 +67,17 @@ namespace PokerGame.View
         {
             switch (suit)
             {
+                //紅色
                 case Suit.Diamonds:
                 case Suit.Hearts: return Color.red;
-
+                //黑色
                 case Suit.Clubs:
                 case Suit.Spades: return Color.black;
+                //預設白色
                 default: return Color.white;
             }
         }
-
+        
         #endregion 私有方法
     }
 

@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CradDemo
   testCard:
-    Suit: 0
-    Rank: 12
+    Suit: 1
+    Rank: 11
   cardView: {fileID: 1798784707}
 --- !u!4 &375681279
 Transform:
