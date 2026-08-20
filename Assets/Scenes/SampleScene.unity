@@ -148,6 +148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b4808011942c1f4c80e813344e0e122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CradDemo
+  testCard:
+    Suit: 0
+    Rank: 12
   cardView: {fileID: 1798784707}
 --- !u!4 &375681279
 Transform:
@@ -349,9 +352,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3011014317597595793, guid: 60cbff79eb80b47409221d85473321d7, type: 3}
+      propertyPath: m_fontSize
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3011014317597595793, guid: 60cbff79eb80b47409221d85473321d7, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3149091463988259543, guid: 60cbff79eb80b47409221d85473321d7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 4387256314259809695, guid: 60cbff79eb80b47409221d85473321d7, type: 3}
       propertyPath: m_Name
       value: CardView
+      objectReference: {fileID: 0}
+    - target: {fileID: 4670919717189891920, guid: 60cbff79eb80b47409221d85473321d7, type: 3}
+      propertyPath: m_text
+      value: "\u2663\uFE0F"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4670919717189891920, guid: 60cbff79eb80b47409221d85473321d7, type: 3}
+      propertyPath: m_fontSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4670919717189891920, guid: 60cbff79eb80b47409221d85473321d7, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306555769102863975, guid: 60cbff79eb80b47409221d85473321d7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
