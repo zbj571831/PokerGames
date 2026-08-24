@@ -6,6 +6,7 @@ namespace PokerGame.Core
 {
     /// <summary>
     /// 保存一副標準的樸克牌(4花色各13種和52張)
+    /// 可重製 洗牌 抽取
     /// </summary>
     public class Deck
     {
@@ -15,18 +16,32 @@ namespace PokerGame.Core
         /// </summary>
         private readonly List<PlayingCard> _cards = new List<PlayingCard>();
         /// <summary>
+        /// c#內建的隨機庫(多面骰)
+        /// </summary>
+        private readonly Random _random = new Random();
+        /// <summary>
         /// 下一張抽取的序號
         /// </summary>
-        private int _nextIndex = 0;
+        private int _nextIndex;
         #endregion 私有欄位
 
         #region 公開屬性
+        /// <summary>
+        /// 殘餘樸克牌數量
+        /// (呼叫參數時會即時更新算式結果)
+        /// </summary>
+        public int Remaining => _cards.Count - _nextIndex;
+        /// <summary>
+        /// 牌庫是否用盡
+        /// </summary>
+        public bool IsEmpty => Remaining == 0;
         #endregion 公開屬性
 
         #region 建構式
         public Deck()
         {
             CreateStandardCards();
+            Reset();
         }
         #endregion 建構式
 
@@ -39,11 +54,21 @@ namespace PokerGame.Core
             _nextIndex = 0;
         }
         /// <summary>
-        /// 洗牌
+        /// 洗牌演算法
         /// </summary>
         public void Shuffle()
         {
-
+            for (int index = _cards.Count; index > 0; index--)
+            {
+                // 抽取要交換的索引碼 = 多面骰 (0, 未洗過的最大值
+               int SwapIndex = _random.Next(0, index);
+                //暫存牌庫中最後一張牌(未洗過)的牌
+                PlayingCard tmpCard = _cards[index - 1];
+                //抽出的牌放到最後
+                _cards[index - 1] = _cards[SwapIndex];
+                //完成交換(原本的最後放到抽出的位置)
+                _cards[SwapIndex] = tmpCard;
+            }
         }
         /// <summary>
         /// 抽牌
@@ -51,8 +76,7 @@ namespace PokerGame.Core
         /// <returns>一張牌</returns>
         public PlayingCard Draw()
         {
-            return _cards[_nextIndex++];
-            _nextIndex++;
+            return _cards[_nextIndex++];//先使用增加
         }
         #endregion 公開方法
 

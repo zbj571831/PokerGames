@@ -15,13 +15,6 @@ public class CradDemo : MonoBehaviour
         //利用除錯訊息視窗印出指定內容
         //Debug.Log(testCard.Info());
         testCard = _deck.Draw();
-        testCard = _deck.Draw();
-        testCard = _deck.Draw();
-        testCard = _deck.Draw();
-        testCard = _deck.Draw();
-        testCard = _deck.Draw();
-        testCard = _deck.Draw();
-        testCard = _deck.Draw();
     }
 
     
