@@ -4,6 +4,9 @@ using PokerGame.Core;
 
 namespace PokerGame.View
 {
+    /// <summary>
+    /// 用來建立卡牌的視覺物件單元
+    /// </summary>
     public class CardView : MonoBehaviour
     {
         #region UI元件
