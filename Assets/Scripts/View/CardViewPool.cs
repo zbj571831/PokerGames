@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace PokerGame.View
 {
@@ -35,6 +36,32 @@ namespace PokerGame.View
                 //收納入池
                 _cardViews.Enqueue(tmpView);
             }
+        }
+        /// <summary>
+        /// 租用一個空閒的牌面(資料顯示器)
+        /// </summary>
+        /// <returns>空閒的牌面</returns>
+        public CardView Rent()
+        {
+            //抽出一張牌(出列)
+            CardView tepView = _cardViews.Dequeue();
+            //取消隱藏 : 遊戲物件.設為(可見)
+            tepView.gameObject.SetActive(true);
+            return tepView;
+        }
+
+        /// <summary>
+        /// 回收一個使用過的牌面(資料顯示器)
+        /// </summary>
+        /// <param name="view"></param>
+        public void Return(CardView view)
+        {
+            //回歸到物件池管理的子物件
+            view.transform.SetParent(transform, false);
+            //先隱藏 : 遊戲物件.設為(不可見)
+            view.gameObject.SetActive(false);
+            //收納入池
+            _cardViews.Enqueue(view);
         }
         #endregion 公開方法
     }
