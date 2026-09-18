@@ -54,9 +54,27 @@ namespace PokerGame.Betting
             if(amount < MinimumBet) 
                 return false;
             if(!_chipWallet.TryWithdraw(amount)) 
-                    return false;
+                return false;
+            //成功下注
             CurrentBet = amount;
             return true;
+        }
+
+        /// <summary>
+        /// 結算目前下注金額返還數值
+        /// </summary>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public int Settle(RoundResult result)
+        {
+            if(CurrentBet == 0) return 0;
+            //依照勝負回傳報告計算返回籌碼
+            int returnChips = result.CalculateReturn(CurrentBet);
+            //進籌碼錢包
+            _chipWallet.Deposit(returnChips);
+            //清空下注金
+            CurrentBet = 0;
+            return returnChips;
         }
         #endregion 公開方法
 
