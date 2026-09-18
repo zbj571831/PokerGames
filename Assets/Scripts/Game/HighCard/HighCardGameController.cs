@@ -1,4 +1,6 @@
-﻿using PokerGame.Game;
+﻿using PokerGame.Core;
+using PokerGame.Game;
+using PokerGame.Game.HighCard;
 using UnityEngine;
 
 public class HighCardGameController : MonoBehaviour
@@ -11,6 +13,13 @@ public class HighCardGameController : MonoBehaviour
     [SerializeField]
     private Transform _dealerHand;
     #endregion 欄位
+
+    #region 私有欄位
+    /// <summary>
+    /// 該遊戲專屬持有的遊戲規則書
+    /// </summary>
+    private readonly HighCardRules _rules = new HighCardRules();
+    #endregion 私有欄位
     void Start()
     {
         PlayRound();
@@ -25,8 +34,12 @@ public class HighCardGameController : MonoBehaviour
         //荷官開局
         _dealer.BeginRound();
         //發牌給參與者
-        _dealer.DealTo(_playerHand);
-        _dealer.DealTo(_dealerHand);
+        PlayingCard playCard = _dealer.DealTo(_playerHand);
+        PlayingCard dealerCard = _dealer.DealTo(_dealerHand);
+
+        string result = _rules.Resolve(playCard, dealerCard);
+
+        Debug.Log(result);
     }
     #endregion 公開方法
 
