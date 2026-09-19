@@ -1,4 +1,5 @@
-﻿using PokerGame.Core;
+﻿using PokerGame.Betting;
+using PokerGame.Core;
 using UnityEditor;
 using UnityEngine;
 
@@ -15,24 +16,24 @@ namespace PokerGame.Game.HighCard
         /// </summary>
         /// <param name="A">對象A</param>
         /// <param name="B">對象B</param>
-        public string Resolve(PlayingCard A, PlayingCard B)
+        public RoundResult Resolve(PlayingCard A, PlayingCard B)
         {
             //值翻譯
             int valA = GetValue(A);
             int valB = GetValue(B);
-            string result = "";
+            
             //如果(a大於b印出大)
             if (valA > valB)
             {
-                result = "大";
+                return new RoundResult(RoundOutcome.Win, 2f, "玩家勝");
             }
             //否則印出小
             else
             {
-                result = "小";
+                return new RoundResult(RoundOutcome.Lose, 0f, "玩家敗");
             }
             //比對結果
-            return $"{A.Info()} 比 {B.Info()} {result}";
+            return new RoundResult(RoundOutcome.Push ,  1.5f, "和局");
         }
         #endregion 公開方法
 
